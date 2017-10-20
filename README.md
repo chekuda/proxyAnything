@@ -23,9 +23,10 @@ With this we can test also remote devices like ipad, android, ipod.
   ## Using Remote device
 
   - Set up your server.js file
-  - Proxy your mobile/Ipad device by going to wifi settings. Use your IP address(type ifconfig in console) and the port displayed in console after run `npm run start:local` or `npm run start:remote`.
+  - Proxy your mobile/Ipad device by going to wifi settings. Use your IP address(type ifconfig in console) and the port displayed in console after run `npm run start:remote`.
   - Go to your browser and navigate to any url ie: `http://jose.com`
-  - Check the console and see if your file has been replaced. note: `>>>>>>>FILE REPLACED should be displayed in the console if file has been replaces`
+  - Check the console and see if your file has been replaced.
+  Note: `>>>>>>>FILE REPLACED should be displayed in the console if file has been replaces`
   - Debug it
 
   ## Using Local device
