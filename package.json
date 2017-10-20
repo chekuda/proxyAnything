@@ -1,0 +1,16 @@
+{
+  "name": "proxyanything",
+  "version": "1.0.0",
+  "description": "//FOR my own device use: 192.168.0.15:3000/proxy?url=http://whatever // //For externar device : //  -Remove the proxy //  - Dont use var url //  - Navigate to http://whatever",
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon server.js"
+  },
+  "author": "jose luis checa exposito",
+  "license": "ISC",
+  "devDependencies": {
+    "express": "^4.16.2",
+    "nodemon": "^1.12.1",
+    "request": "^2.83.0"
+  }
+}
