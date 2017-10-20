@@ -7,47 +7,31 @@ const app = express()
 const port = process.env.PORT || 3000
 const ENV = process.argv[2]
 
-const magicObject = [
+const MAGIC_OBJECT = [
   {
     regexProxyFile: 'DPmisc\.min\.js', //Regex to match the file you want to proxy
     localFile: __dirname + '/public/localfile.js' //Local file you want to serve
   }, {
-    regexProxyFile: 'bat.js', //Regex to match the file you want to proxy
+    regexProxyFile: 'chartbeat_mab.js', //Regex to match the file you want to proxy
     localFile: __dirname + '/public/localbat.js' //Local file you want to serve
   }
 ]
 
-/*******************
-  Devices for test
-*********************/
-
-const DEVICES = {
-  local: {
-    url: '/proxy',
-    rgxremove: '/?url='
-  },
-  remote: {
-    url: '/',
-    rgxremove: ''
-  }
+const getReplacementUrl = urlRequested => {
+  return MAGIC_OBJECT.find(({ regexProxyFile }) => urlRequested.indexOf(regexProxyFile) !== -1)
 }
 
-const getUrlIfMatch = (urlRequested) => {
-  return magicObject.find(({ regexProxyFile }) => urlRequested.indexOf(regexProxyFile) !== -1)
-}
+app.use('/', (req, res, next) => {
+  const urlToServe = getReplacementUrl(req.url)
 
-app.use(DEVICES[ENV].url, function(req, res) {
-  const url = req.url.replace(DEVICES[ENV].rgxremove,'')
-  const urlToServe = getUrlIfMatch(url)
-
-    if(urlToServe && fs.existsSync(urlToServe.localFile)) {
-      console.log('>>>>>>>FILE REPLACED', url)
+    if(urlToServe) {
+      console.log('>>>>>>>FILE REPLACED', req.url)
       console.log('>>>>>>>FILE SERVED', urlToServe.localFile)
 
       res.sendFile(urlToServe.localFile)
     } else {
-      console.log(url)
-      req.pipe(request(url)).pipe(res)
+      console.log(req.url)
+      req.pipe(request(req.url)).pipe(res)
     }
 })
 

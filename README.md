@@ -10,7 +10,7 @@ With this we can test also remote devices like ipad, android, ipod.
   - git clone (this repo)
   - Go to the repo folder and type `npm i` in your terminal
   - Set up the server
-  - `npm run start:local` or `npm run start:remote`
+  - `npm run start`
 
 # How to set up the chekuda-proxy-server?
 
@@ -19,17 +19,15 @@ With this we can test also remote devices like ipad, android, ipod.
     - Add the regex to match the file you want to be replaced. ie: 'remotefile\.min\.js'
     - Add the relative path of that file. ie: '/public/localfile.js'
     - You can add as many object as you want to serve different files
-
-  ## Using Remote device
-
-  - Set up your server.js file
-  - Proxy your mobile/Ipad device by going to wifi settings. Use your IP address(type ifconfig in console) and the port displayed in console after run `npm run start:remote`.
-  - Go to your browser and navigate to any url ie: `http://jose.com`
+  - Set your host file with ip address ie: `192.168.x.xx chekuda.com`
+    - Help: In Mac type `sudo nano /etc/hosts`
+  - Proxy your mobile/Ipad/laptop device by going to wifi settings. Use your IP address(type ifconfig in console) and the port displayed in console after run `npm run start`.
+  - Go to your browser and navigate to any url ie: `http://chekuda.com`
   - Check the console and see if your file has been replaced.
   Note: `>>>>>>>FILE REPLACED should be displayed in the console if file has been replaces`
   - Debug it
 
-  ## Using Local device
-
-  - Set up your server.js file
-  - WORKING ON IT
+  ### Tips
+    - As the urls are caching by the browser:
+      - Use incognito window
+      - Clean your cache.
