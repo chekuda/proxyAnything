@@ -4,7 +4,6 @@ const request = require('request')
 const app = express()
 
 const port = process.env.PORT || 3000
-const ENV = process.argv[2]
 
 const MAGIC_OBJECT = [
   {
