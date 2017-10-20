@@ -4,7 +4,8 @@
   "description": "//FOR my own device use: 192.168.0.15:3000/proxy?url=http://whatever // //For externar device : //  -Remove the proxy //  - Dont use var url //  - Navigate to http://whatever",
   "main": "server.js",
   "scripts": {
-    "start": "nodemon server.js"
+    "start:local": "nodemon server.js local",
+    "start:remote": "nodemon server.js remote"
   },
   "author": "jose luis checa exposito",
   "license": "ISC",
