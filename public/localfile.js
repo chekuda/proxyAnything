@@ -1,1 +1,1 @@
-console.log('JS FILE SERVED')
+console.log('FILE SERVED')

@@ -29,7 +29,15 @@ app.use('/', (req, res, next) => {
       res.sendFile(urlToServe.localFile)
     } else {
       console.log(req.url)
-      req.pipe(request(req.url)).pipe(res)
+      req
+        .pipe( request(req.url) )
+        .on('error', err => {
+          console.log('Erro when try to pipe the request ', err)
+        })
+        .pipe(res)
+        .on('error', err => {
+          console.log('Erro when try to pipe the response', err)
+        })
     }
 })
 
